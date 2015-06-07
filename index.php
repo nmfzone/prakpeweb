@@ -20,7 +20,7 @@
 
 </head>
 <body>
-	<div id="wrapper">
+	<div class="wrapper w80">
 		
 		<div id="login-area">
 			<div id="login-message"></div>

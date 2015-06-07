@@ -11,8 +11,21 @@
 	padding: 0 auto;
 }
 
+.w70 {
+	width: 70%;
+}
+.w80 {
+	width: 80%;
+}
+
 body {
 	background: #FFFFFF;
+	width: 100%;
+	overflow: hidden;
+}
+
+.wrapper {
+	overflow: hidden;
 }
 
 #uii-form {
@@ -39,7 +52,7 @@ body {
 	width: 60%;
 }
 
-#uii-form.login > .uii-button-control {
+#uii-form.login > .uii-input-control {
 	margin: 5px 0 0 0;
 	clear: both;
 }
