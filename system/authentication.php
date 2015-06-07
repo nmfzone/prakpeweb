@@ -81,10 +81,11 @@ class Authentication extends Database {
 	 */
 	public function logout()
 	{
-		session_destroy();
-		// $app = new System();
+		session_start();
+		unset($_SESSION['username']);
+		$app = new System();
 
-		// return $app->redirect('/');
+		return $app->redirect('/');
 	}
 
 }
