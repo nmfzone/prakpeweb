@@ -1,5 +1,9 @@
 <?php
 
-	include('system.php');
-	include('database.php');
-	include('app.php');
+	$DIR_PATH = realpath(dirname(__FILE__));
+
+	include($DIR_PATH . '/../system/system.php');
+	include($DIR_PATH . '/../system/database.php');
+	include($DIR_PATH . '/../system/authentication.php');
+	include($DIR_PATH . '/app.php');
+	include($DIR_PATH . '/auth.php');

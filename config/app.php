@@ -27,5 +27,6 @@
 
 
 	$app = new System();
+	$auth = new Authentication($db_connection);
 	$db = new Database($db_connection);
 	$app->setUrl($base_url);

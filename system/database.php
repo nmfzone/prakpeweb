@@ -2,11 +2,11 @@
 
 class Database extends PDO {
 
-	private $engine;
-    private $host;
-    private $database;
-    private $user;
-    private $pass;
+	protected $engine;
+    protected $host;
+    protected $database;
+    protected $user;
+    protected $pass;
 	
 	/**
 	*	The class constructor.
@@ -106,13 +106,18 @@ class Database extends PDO {
 	{
 	    $command = 'SELECT ' . $rows . ' FROM ' . $table;
         if ($where != NULL) $command .= ' WHERE ' . $where;
-        if ($order != NULL) $command .= ' ORDER BY ' . $order;            
+        if ($order != NULL) $command .= ' ORDER BY ' . $order;
         if ($limit != NULL) $command .= ' LIMIT ' . $limit;
 			
 		$query = parent::prepare($command);
 		$query->execute();
 
-		return $query->fetchAll(PDO::FETCH_OBJ);
+		$results = [
+			'query' => $query,
+			'result' => $query->fetchAll(PDO::FETCH_OBJ)
+		];
+
+		return $results;
 	}
 
 }

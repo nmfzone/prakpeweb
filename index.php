@@ -1,5 +1,7 @@
 <?php
 	include('config/autoload.php');
+	session_start();
+	echo $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,7 +24,10 @@
 </head>
 <body>
 	<div class="wrapper w80">
-		
+	<?php
+		if (!$auth->check())
+		{
+	?>
 		<div id="login-area">
 			<div id="login-message"></div>
 			<form method="POST" action="<?php echo $app->base_url('login.php'); ?>" id="uii-form" class="login">
@@ -39,6 +44,15 @@
 				<button class="uii-button button-login">Login</button>
 			</form>
 		</div>
+	<?php
+		}
+		else
+		{
+	?>
+		<a href="<?php echo $app->base_url('logout.php'); ?>">Logout</a>
+	<?php
+		}
+	?>
 
 	</div>
 

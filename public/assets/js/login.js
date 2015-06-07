@@ -14,7 +14,7 @@ $(document).ready(function()
             data:data
         }).done(function(data)
         {
-           if(data != '1' || data != '0')
+           if(data != 1 || data != 0)
            {
                 $("#login-message").hide();
                 $("#login-message").show('slow');
@@ -22,12 +22,12 @@ $(document).ready(function()
                 $("#login-message").html(data);
                 console.log(base_url);
             }
-            else if(data == '1')
+            else if(data == 1)
             {
                 window.location.href = base_url + 'admin/';
                 throw new Error('go');
             }
-            else if (data == '0')
+            else if (data == 0)
             {
                 window.location.href = base_url + 'user/';
                 throw new Error('go');
