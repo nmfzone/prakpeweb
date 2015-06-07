@@ -1,0 +1,46 @@
+/**
+*
+*	@author 	Nabil Muhammad Firdaus
+*	@link 		www.nmfzone.com
+*	@github 	nmfzone
+*
+*/
+
+* {
+	margin: 0 auto;
+	padding: 0 auto;
+}
+
+body {
+	background: #FFFFFF;
+}
+
+#uii-form {
+	width: 100%;
+}
+
+#uii-form.login {
+	width: 250px;
+	background: #fff;
+	padding: 15px;
+	width: 100%;
+}
+
+#uii-form.login > .uii-input-control {
+	margin: 0 0 10px 0;
+	clear: both;
+	width: 100%;
+}
+
+#uii-form.login > .uii-input-control > label {
+	width: 40%;
+}
+
+#uii-form.login > .uii-input-control > input.uii-input {
+	width: 60%;
+}
+
+#uii-form.login > .uii-button-control {
+	margin: 5px 0 0 0;
+	clear: both;
+}

@@ -112,7 +112,7 @@ class Database extends PDO {
 		$query = parent::prepare($command);
 		$query->execute();
 
-		return $query->fetch(PDO::FETCH_OBJ);
+		return $query->fetchAll(PDO::FETCH_OBJ);
 	}
 
 }

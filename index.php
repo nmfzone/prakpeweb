@@ -10,6 +10,7 @@
 	<!--
 		Stylesheet Area
 	-->
+	<link rel="stylesheet" type="text/css" href="<?php echo $app->base_url('public/assets/css/uiicss.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo $app->base_url('public/assets/css/style.css'); ?>">
 
 	<!--
@@ -20,10 +21,23 @@
 </head>
 <body>
 	<div id="wrapper">
-	<?php
-
-	?>
 		
+		<div id="login-area">
+			<div id="login-message"></div>
+			<form method="POST" action="<?php echo $app->base_url('login.php'); ?>" id="uii-form" class="login">
+				<div class="uii-input-control">
+					<label for="username">Username</label>
+					<input type="text" name="username" placeholder="Your NIM" class="uii-input" required="required">
+				</div>
+				<div class="uii-input-control">
+					<label for="password">Password</label>
+					<input type="text" name="password" placeholder="Password" class="uii-input" required="required">
+				</div>
+
+				<button class="uii-button button-login">Login</button>
+			</form>
+		</div>
+
 	</div>
 
 	<div id="footer">
