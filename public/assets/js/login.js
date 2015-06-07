@@ -14,22 +14,21 @@ $(document).ready(function()
             data:data
         }).done(function(data)
         {
-           if(data != 1 || data != 0)
+           if(data != '1' && data != '0')
            {
                 $("#login-message").hide();
                 $("#login-message").show('slow');
                 $("#uii-form.login")[0].reset();
                 $("#login-message").html(data);
-                console.log(base_url);
             }
-            else if(data == 1)
+            else if (data == '1')
             {
-                window.location.href = base_url + 'admin/';
+                window.location.href = base_url + '/admin/';
                 throw new Error('go');
             }
-            else if (data == 0)
+            else if (data == '0')
             {
-                window.location.href = base_url + 'user/';
+                window.location.href = base_url + '/user/';
                 throw new Error('go');
             }
         });
