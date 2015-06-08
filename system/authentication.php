@@ -14,8 +14,10 @@ class Authentication extends Database {
 	 */
 	public function login($username, $password)
 	{
-		$where =  $this->identity . " = '" . $username . "' AND password = '" . md5($password) . "'";
-		$try = $this->select($this->table, 'role', $where);
+		$username = htmlspecialchars(trim($username));
+		$username = htmlspecialchars(trim($password));
+		$where    =  $this->identity . " = '" . $username . "' AND password = '" . md5($password) . "'";
+		$try      = $this->select($this->table, 'role', $where);
 
 		if ($try['query']->rowCount() > 0)
 		{
@@ -101,18 +103,28 @@ class Authentication extends Database {
 	 */
 	public function isAllowed($areas)
 	{
-		if (strcmp($areas, "AdminPage"))
+		if (strcmp($areas, "AdminPage") == 0)
 		{
-			return $this->isAdmin();
+			if ($this->isAdmin())
+			{
+				//
+			}
+			else
+			{
+				return $this->redirect('/');
+			}
 		}
-		else if (strcmp($areas, "UserPage"))
+		else if (strcmp($areas, "UserPage") == 0)
 		{
-			return $this->isAdmin() || $this->isUser();
+			if ($this->isAdmin() || $this->isUser())
+			{
+				//
+			}
+			else
+			{
+				return $this->redirect('/');
+			}
 		}
-
-		$app = new System();
-
-		return $app->redirect('/');
 	}
 
 	/**
@@ -124,7 +136,6 @@ class Authentication extends Database {
 	{
 		if ($this->check())
 		{
-			session_start();
 			$where =  $this->identity . " = '" . $this->getSessionUsername() . "' AND role = " . $this->getSessionRole();
 			$try = $this->select($this->table, 'name', $where);
 
@@ -148,7 +159,6 @@ class Authentication extends Database {
 	{
 		if ($this->isIssetSessionUsername())
 		{
-			session_start();
 			return $_SESSION['username'];
 		}
 	}
@@ -162,7 +172,6 @@ class Authentication extends Database {
 	{
 		if ($this->isIssetSessionRole())
 		{
-			session_start();
 			return $_SESSION['role'];
 		}
 	}
@@ -174,7 +183,6 @@ class Authentication extends Database {
 	 */
 	public function isIssetSessionUsername()
 	{
-		session_start();
 		return isset($_SESSION['username']);
 	}
 
@@ -185,7 +193,6 @@ class Authentication extends Database {
 	 */
 	public function isIssetSessionRole()
 	{
-		session_start();
 		return isset($_SESSION['role']);
 	}
 
@@ -199,9 +206,20 @@ class Authentication extends Database {
 		session_start();
 		unset($_SESSION['username']);
 		unset($_SESSION['role']);
+
+		return $this->redirect('/');
+	}
+
+	/**
+	 *	Using System redirect()
+	 * 
+	 * 	@return void
+	 */
+	protected function redirect($location)
+	{
 		$app = new System();
 
-		return $app->redirect('/');
+		return $app->redirect($location);
 	}
 
 }

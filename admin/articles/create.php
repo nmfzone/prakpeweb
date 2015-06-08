@@ -1,3 +1,8 @@
+<?php
+	include("../../config/autoload.php");
+	session_start();
+	$auth->isAllowed("AdminPage");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +20,8 @@
 	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/vendor/jquery/dist/jquery.min.js'); ?>"></script>
 </head>
 <body>
-	
+	<?php
+		echo "Howdy, " . $auth->getName();
+	?>
 </body>
 </html> 
