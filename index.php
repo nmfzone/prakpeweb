@@ -1,5 +1,5 @@
 <?php
-	include('config/autoload.php');
+	include("config/autoload.php");
 	session_start();
 ?>
 <!DOCTYPE html>

@@ -10,7 +10,7 @@ class Authentication extends Database {
 	 * 	Authenticating users
 	 *
 	 *	@param $username, $password
-	 * 	@return void
+	 * 	@return int UserRole
 	 */
 	public function login($username, $password)
 	{
@@ -19,18 +19,17 @@ class Authentication extends Database {
 
 		if ($try['query']->rowCount() > 0)
 		{
-			$this->authenticate($username);
-		}
-		else
-		{
-			return "User Not Found!";
-		}
+			foreach ($try['result'] as $data) {
+				$role = $data->role;
+			}
 
-		foreach ($try['result'] as $data) {
-			$results = $data->role;
-		}
+			$this->authenticate($username, $role);
 
-		return $results;
+			return $role;
+		}
+		
+		return "User Not Found!";
+
 	}
 
 	/**
@@ -39,14 +38,15 @@ class Authentication extends Database {
 	 * 	@param  $username
 	 * 	@return void
 	 */
-	public function authenticate($username)
+	protected function authenticate($username, $role)
 	{
 		session_start();
 		$_SESSION['username'] = $username;
+		$_SESSION['role'] = $role;
 	}
 
 	/**
-	 *	Set the Credentials that using by Authentication
+	 *	Set the credentials that using by Authentication
 	 *
 	 * 	@param $table, $identity
 	 * 	@return void
@@ -65,13 +65,128 @@ class Authentication extends Database {
 	}
 
 	/**
-	 * 	Check the user is have session or not
+	 * 	Check the viewer is have session or not
 	 * 
-	 * 	@return void
+	 * 	@return boolean
 	 */
 	public function check()
 	{
-		if (isset($_SESSION['username'])) return $_SESSION['username'] != '';
+		return $this->isIssetSessionUsername() && $this->isIssetSessionRole();
+	}
+
+	/**
+	 * 	To check viewer is admin or not
+	 * 
+	 * 	@return boolean
+	 */
+	public function isAdmin()
+	{
+		return $this->getSessionRole() == 1;
+	}
+
+	/**
+	 * 	To check viewer is user or not
+	 * 
+	 * 	@return boolean
+	 */
+	public function isUser()
+	{
+		return $this->getSessionRole() == 0;
+	}
+
+	/**
+	 * 	To check is viewer allowed to view the page or not
+	 * 
+	 * 	@return boolean
+	 */
+	public function isAllowed($areas)
+	{
+		if (strcmp($areas, "AdminPage"))
+		{
+			return $this->isAdmin();
+		}
+		else if (strcmp($areas, "UserPage"))
+		{
+			return $this->isAdmin() || $this->isUser();
+		}
+
+		$app = new System();
+
+		return $app->redirect('/');
+	}
+
+	/**
+	 * 	Get the name of the User
+	 * 
+	 * 	@return string 		Name of user
+	 */
+	public function getName()
+	{
+		if ($this->check())
+		{
+			session_start();
+			$where =  $this->identity . " = '" . $this->getSessionUsername() . "' AND role = " . $this->getSessionRole();
+			$try = $this->select($this->table, 'name', $where);
+
+			if ($try['query']->rowCount() > 0)
+			{
+				foreach ($try['result'] as $data) {
+					$name = $data->name;
+				}
+
+				return $name;
+			}
+		}
+	}
+
+	/**
+	 * 	Get the Username from Session
+	 * 
+	 * 	@return string 		Session Username
+	 */
+	public function getSessionUsername()
+	{
+		if ($this->isIssetSessionUsername())
+		{
+			session_start();
+			return $_SESSION['username'];
+		}
+	}
+
+	/**
+	 * 	Get the Role from Session
+	 * 
+	 * 	@return string 		Session Role
+	 */
+	public function getSessionRole()
+	{
+		if ($this->isIssetSessionRole())
+		{
+			session_start();
+			return $_SESSION['role'];
+		}
+	}
+
+	/**
+	 * 	To check is Session Username empty or not
+	 * 
+	 * 	@return boolean
+	 */
+	public function isIssetSessionUsername()
+	{
+		session_start();
+		return isset($_SESSION['username']);
+	}
+
+	/**
+	 * 	To check is Session Role empty or not
+	 * 
+	 * 	@return boolean
+	 */
+	public function isIssetSessionRole()
+	{
+		session_start();
+		return isset($_SESSION['role']);
 	}
 
 	/**
@@ -83,6 +198,7 @@ class Authentication extends Database {
 	{
 		session_start();
 		unset($_SESSION['username']);
+		unset($_SESSION['role']);
 		$app = new System();
 
 		return $app->redirect('/');

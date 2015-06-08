@@ -9,9 +9,9 @@ $(document).ready(function()
         var base_url = window.location.origin;
 
         $.ajax({
-            url:url,
-            type:method,
-            data:data
+            url: url,
+            type: method,
+            data: data
         }).done(function(data)
         {
            if(data != '1' && data != '0')
