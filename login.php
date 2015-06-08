@@ -13,5 +13,5 @@
 	}
 	else
 	{
-		$app->redirect('');
+		$app->redirect('/');
 	}
