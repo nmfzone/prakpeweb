@@ -1,17 +1,17 @@
 <?php
 
-  include('config/autoload.php');
+	include("config/autoload.php");
 
-  if (isset($_POST['username']) && isset($_POST['password']))
-  {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+	if (isset($_POST['username']) && isset($_POST['password']))
+	{
+		$username = $_POST['username'];
+		$password = $_POST['password'];
 
-    $role = $auth->login($username, $password);
+		$role = $auth->login($username, $password);
 
-    echo $role;
-  }
-  else 
-  {
-    $app->redirect('/');
-  }
+		echo $role;
+	}
+	else
+	{
+		$app->redirect('');
+	}
