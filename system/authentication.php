@@ -14,9 +14,7 @@ class Authentication extends Database {
 	 */
 	public function login($username, $password)
 	{
-		$username = htmlspecialchars(trim($username));
-		$username = htmlspecialchars(trim($password));
-		$where    =  $this->identity . " = '" . $username . "' AND password = '" . md5($password) . "'";
+		$where    = $this->identity . " = '" . $username . "' AND password = '" . md5($password) . "'";
 		$try      = $this->select($this->table, 'role', $where);
 
 		if ($try['query']->rowCount() > 0)
@@ -128,24 +126,25 @@ class Authentication extends Database {
 	}
 
 	/**
-	 * 	Get the name of the User
+	 * 	Get the Attribute from the Table
 	 * 
-	 * 	@return string 		Name of user
+	 * 	@return object		Object of Table Attribute
 	 */
-	public function getName()
+	public function get()
 	{
 		if ($this->check())
 		{
 			$where =  $this->identity . " = '" . $this->getSessionUsername() . "' AND role = " . $this->getSessionRole();
-			$try = $this->select($this->table, 'name', $where);
+			$try = $this->select($this->table, '*', $where);
 
 			if ($try['query']->rowCount() > 0)
 			{
-				foreach ($try['result'] as $data) {
-					$name = $data->name;
+				foreach ($try['result'] as $data)
+				{
+					$attr = $data;
 				}
 
-				return $name;
+				return $attr;
 			}
 		}
 	}
