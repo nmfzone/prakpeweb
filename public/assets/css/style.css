@@ -1,9 +1,96 @@
 
 body {
-	background: #00589F;
+	background: #FC5638;
+	/*background: #272D4E;*/
+	/*background: #505050;*/
 }
 
 #login-area {
 	width: 300px;
 	float: right;
+	padding: 15px;
+	background: #000;
+	color: #fff;
+}
+
+.wrapper {
+	width: 80%;
+	/*background: #FC5638;*/
+	/*background: #363636;*/
+	background: #FFF;
+}
+
+#topbar {
+	clear: both;
+	font-family: 'Open Sans Semibold', Arial, sans-serif;
+	font-size: 14.5px;
+	background: #004F8B;
+	padding: 12px 20px 12px 20px;
+	color: #FFF;
+	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	width: 79.1%;
+	left: 9%;
+	float: left;
+	position: fixed;
+	text-align: center;
+	z-index: 1000;
+	margin: 1.8% 0 0 0;
+}
+
+.triangle-l {
+	top: 8.5%;
+	border-color: transparent #272D4E transparent transparent;
+}
+
+.triangle-r {
+	top: 4.1%;
+	border-color: transparent transparent transparent #272D4E;
+}
+
+#topbar a {
+	margin: 0 10px 0 10px;
+	padding: 0 40px 0 0;
+	border-right: 1px solid #FFF;
+}
+
+#topbar a:last-child {
+	border-right: none;
+}
+
+#topbar a:hover {
+	color: black;
+}
+
+#topbar a:visited, #topbar a {
+	color: #FFF;
+	text-decoration: none;
+}
+
+#main {
+	
+}
+
+#footer {
+	clear: both;
+	background: #004F8B;
+	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	color: #FFF;
+	width: 79.1%;
+	left: 9%;
+	padding: 13px 20px 13px 20px;
+	font-size: 14px;
+	position: fixed;
+	float: left;
+	text-align: center;
+	z-index: 1000;
+}
+
+.bottom > .triangle-l {
+	top: -15px;
+	border-color:transparent #272D4E transparent transparent;
+}
+
+.bottom > .triangle-r {
+	top: -45px;
+	border-color:transparent transparent transparent #272D4E;
 }

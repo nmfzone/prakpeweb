@@ -3,7 +3,6 @@
 	session_start();
 	$auth->isAllowed("AdminPage");
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
