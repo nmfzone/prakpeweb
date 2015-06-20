@@ -1,5 +1,7 @@
 <?php
 
+namespace System;
+
 class System {
 
 	private $url;

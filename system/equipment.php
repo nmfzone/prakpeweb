@@ -1,5 +1,7 @@
 <?php
 
+namespace System;
+
 class Equipment {
 
 	private $siteName;

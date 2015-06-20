@@ -1,6 +1,10 @@
 <?php
 
-class Authentication extends Database {
+namespace System;
+
+use System\Database;
+
+class Authentication {
 
 	protected $table = 'users';
 

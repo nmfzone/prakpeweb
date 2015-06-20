@@ -1,5 +1,9 @@
 <?php
 
+	use System\System;
+	use System\Authentication;
+	use System\Database;
+
 	/**
 	 *	
 	 * 	Change these configuration and match with your own

@@ -1,5 +1,7 @@
 <?php
 
+	use System\Equipment;
+
 	/**
 	 *	
 	 * 	Configuration for the UI Details

@@ -1,5 +1,9 @@
 <?php
 
+namespace System;
+
+use \PDO;
+
 class Database extends PDO {
 
 	protected $engine;
