@@ -2,9 +2,9 @@
 
 namespace System;
 
-use System\Database;
+use System\Database as Database;
 
-class Authentication {
+class Authentication extends Database {
 
 	protected $table = 'users';
 
