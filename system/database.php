@@ -4,8 +4,8 @@ namespace System;
 
 use \PDO;
 
-class Database extends \PDO {
-
+class Database extends \PDO
+{
 	protected $engine;
     protected $host;
     protected $database;
@@ -22,11 +22,10 @@ class Database extends \PDO {
 		$this->database = $data['database'];
 		$this->user     = $data['user'];
 		$this->pass     = $data['pass'];
-		
-        $dns = $this->engine.':dbname='.$this->database.";host=".$this->host;
-        parent::__construct( $dns, $this->user, $this->pass );
-	}
 
+		$dns = $this->engine.':dbname='.$this->database.";host=".$this->host;
+        parent::__construct( $dns, $this->user, $this->pass );
+	}	
 	/*
     *	Insert values into the table
     */
@@ -59,11 +58,13 @@ class Database extends \PDO {
 		$command   = 'DELETE FROM ' . $tabel;
 		$parameter = NULL;
 
-		foreach ($where as $key => $value) 
+		$list = [];
+
+		foreach ($where as $key => $value)
 		{
 			$list[]    = "$key = :$key";
 			$parameter .= ', ":' . $key . '":"' . $value . '"';
-		} 
+		}
 
 		$command .= ' WHERE ' . implode(' AND ', $list);
 		$json    = "{" . substr($parameter, 1) . "}";
@@ -78,7 +79,7 @@ class Database extends \PDO {
 	/*
     *	Update Record
     */
-	public function update($tabel, $fild = NULL, $where = NULL)
+	public function update($tabel, $field = NULL, $where = NULL)
 	{
 		$update = 'UPDATE ' . $tabel . ' SET ';
 		$set    = NULL;
@@ -106,12 +107,14 @@ class Database extends \PDO {
 	/*
     *	Selects information from the database.
     */
-	public function select($table, $rows, $where = NULL, $order = NULL, $limit = NULL)
+	public function select($table, $rows = NULL, $where = NULL, $order = NULL, $limit = NULL)
 	{
+		if (trim($rows) == '' || $rows == NULL) $rows = '*';
+
 	    $command = 'SELECT ' . $rows . ' FROM ' . $table;
-        if ($where != NULL) $command .= ' WHERE ' . $where;
-        if ($order != NULL) $command .= ' ORDER BY ' . $order;
-        if ($limit != NULL) $command .= ' LIMIT ' . $limit;
+        if ($where != NULL || trim($where) != '') $command .= ' WHERE ' . $where;
+        if ($order != NULL || trim($order) != '') $command .= ' ORDER BY ' . $order;
+        if ($limit != NULL || trim($limit) != '') $command .= ' LIMIT ' . $limit;
 			
 		$query = parent::prepare($command);
 		$query->execute();

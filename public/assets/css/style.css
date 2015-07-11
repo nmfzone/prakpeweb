@@ -11,6 +11,7 @@ body {
 	padding: 15px;
 	background: #000;
 	color: #fff;
+	font-family: 'Open Sans Semibold', Arial, sans-serif;
 }
 
 .wrapper {
@@ -93,4 +94,38 @@ body {
 .bottom > .triangle-r {
 	top: -45px;
 	border-color:transparent transparent transparent #272D4E;
+}
+
+a#scroll-up {
+    background-color: #E53C12;
+}
+
+#home-media {
+	padding-left: 40px;
+	width: 96.4%;
+	display: inline-block;
+}
+
+#home-media > .home-left {
+	display: inline;
+	width: 67%;
+	float: left;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#home-media > #home-right {
+	display: inline;
+	width: 30%;
+	float: right;
+}
+
+#berita-terbaru {
+	display: none;
+	padding-left: 40px;
+}
+
+#profil-ika {
+	display: none;
+	padding-left: 40px;
 }

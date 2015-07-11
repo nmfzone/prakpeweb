@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Management Artikel | Sistem Informasi Ikatan Alumni UII</title>
+	<title>Management Lowongan Kerja | Sistem Informasi Ikatan Alumni UII</title>
 
 	<link href="<?php echo $app->base_url('public/assets/images/favicon.ico'); ?>" rel="shortcut icon" type="image/x-icon" />
 
@@ -22,7 +22,7 @@
 		Javascript Area
 	-->
 	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/vendor/jquery/dist/jquery.min.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/js/articles.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/js/loker.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/js/admin.js'); ?>"></script>
 
 </head>
@@ -34,7 +34,7 @@
 		<div id="post-area">
 			<div id="post-message"><?php if (isset($_GET['msg'])) echo $_GET['msg']; ?></div>
 
-			<div class="tambah-artikel"><a href="<?php echo $app->base_url('admin/articles/create.php'); ?>">Tambah Artikel</a></div>
+			<div class="tambah-artikel"><a href="<?php echo $app->base_url('admin/loker/create.php'); ?>">Tambah Lowongan Kerja</a></div>
 			<br>
 			<table id="list-articles">
 				<tr>
@@ -48,7 +48,7 @@
 					<th>Action</th>
 				</tr>
 			<?php
-				$dt = $db->select('artikel', '', "type = 'article'");
+				$dt = $db->select('artikel', '', "type = 'loker'");
 
 				$i = 1;
 				foreach ($dt['result'] as $data) {
@@ -61,7 +61,7 @@
 					echo "<td>" . $dtt->nama . "</td>";
 					echo "<td>" . $data->published_at . "</td>";
 					echo "<td>" . $data->last_edited . "</td>";
-					echo "<td><div class='post-action'><div class='edit'><a href='" . $app->base_url("admin/articles/edit.php?id=$data->id") . "'>Edit</a></div><div class='delete'><form method='POST' id='form-delete' action='" . $app->base_url('admin/articles/articlesControl.php') . "'><input type='hidden' name='id' value='" . $data->id . "'><input type='hidden' name='actionType' value='delete'><button type='submit'>x</button></form></div></div></td>";
+					echo "<td><div class='post-action'><div class='edit'><a href='" . $app->base_url("admin/loker/edit.php?id=$data->id") . "'>Edit</a></div><div class='delete'><form method='POST' id='form-delete' action='" . $app->base_url('admin/loker/lokerControl.php') . "'><input type='hidden' name='id' value='" . $data->id . "'><input type='hidden' name='actionType' value='delete'><button type='submit'>x</button></form></div></div></td>";
 					echo "</tr>";
 					$i++;
 				}

@@ -4,8 +4,8 @@ namespace System;
 
 use System\Database as Database;
 
-class Authentication extends Database {
-
+class Authentication extends Database
+{
 	protected $table = 'users';
 
 	protected $identity = 'username';
@@ -21,7 +21,7 @@ class Authentication extends Database {
 		$where    = $this->identity . " = '" . $username . "' AND password = '" . md5($password) . "'";
 		$try      = $this->select($this->table, 'role', $where);
 
-		if ($try['query']->rowCount() > 0)
+		if ($try['query']->rowCount() == 1)
 		{
 			foreach ($try['result'] as $data) {
 				$role = $data->role;
@@ -30,6 +30,10 @@ class Authentication extends Database {
 			$this->authenticate($username, $role);
 
 			return $role;
+		}
+		else if ($try['query']->rowCount() > 1)
+		{
+			return "Error! User with those credentials found more than one time in database.";
 		}
 		
 		return "User Not Found!";
@@ -141,14 +145,9 @@ class Authentication extends Database {
 			$where =  $this->identity . " = '" . $this->getSessionUsername() . "' AND role = " . $this->getSessionRole();
 			$try = $this->select($this->table, '*', $where);
 
-			if ($try['query']->rowCount() > 0)
+			if ($try['query']->rowCount() == 1)
 			{
-				foreach ($try['result'] as $data)
-				{
-					$attr = $data;
-				}
-
-				return $attr;
+				return $try['result'][0];
 			}
 		}
 	}

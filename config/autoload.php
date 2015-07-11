@@ -1,17 +1,18 @@
 <?php
 
 	$DIR_PATH = realpath(dirname(__FILE__));
+	$ROOT_PATH = $DIR_PATH . '/../';
 	
 	function autoload($className)
 	{
 		$DIR_PATH = realpath(dirname(__FILE__)). '/../';
-	    $className = strtolower(ltrim($className, '\/'));
+	    $className = strtolower(ltrim($className, '/'));
 	    $fileName  = '';
 	    $namespace = '';
-	    if ($lastNsPos = strripos($className, '\/')) {
+	    if ($lastNsPos = strripos($className, '/')) {
 	        $namespace = substr($className, 0, $lastNsPos);
 	        $className = substr($className, $lastNsPos + 1);
-	        $fileName  = str_replace('\/', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+	        $fileName  = str_replace('/', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
 	    }
 	    $fileName .= str_replace('_', DIRECTORY_SEPARATOR, $className) . '.php';
 	 

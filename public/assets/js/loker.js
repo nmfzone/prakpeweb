@@ -1,6 +1,6 @@
 $(document).ready(function()
 {
-    $("#uii-form.articles").submit(function(e)
+    $("#uii-form.loker").submit(function(e)
     {
         e.preventDefault(); // Stop Browser to follow the action URL
         var url      = $(this).attr('action');
@@ -22,13 +22,13 @@ $(document).ready(function()
             }
             else if (data == '1')
             {
-                window.location.href = base_url + '/admin/articles?msg=Post Successfully Created!';
+                window.location.href = base_url + '/admin/loker?msg=Lowongan Kerja Successfully Created!';
                 throw new Error('go');
             }
         });
     });
 
-    $("#uii-form.articles-edit").submit(function(e)
+    $("#uii-form.loker-edit").submit(function(e)
     {
         e.preventDefault(); // Stop Browser to follow the action URL
         var url      = $(this).attr('action');
@@ -50,7 +50,7 @@ $(document).ready(function()
             }
             else if (data == '1')
             {
-                window.location.href = base_url + '/admin/articles?msg=Post Successfully Edited!';
+                window.location.href = base_url + '/admin/loker?msg=Lowongan Kerja Successfully Edited!';
                 throw new Error('go');
             }
         });

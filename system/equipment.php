@@ -2,8 +2,8 @@
 
 namespace System;
 
-class Equipment {
-
+class Equipment
+{
 	private $siteName;
 	
 	private $copyrights = '&copy; 2015';
@@ -12,9 +12,18 @@ class Equipment {
 
 	public function __construct($siteDetails = [])
 	{
-		$this->siteName   = $siteDetails['siteName'];
-		$this->copyrights = $siteDetails['copyright'];
-		$this->slogan     = $siteDetails['slogan'];
+		if ($siteDetails['siteName'] != '')
+		{
+			$this->siteName   = $siteDetails['siteName'];
+		}
+		if ($siteDetails['copyright'] != '')
+		{
+			$this->copyrights = $siteDetails['copyright'];
+		}
+		if ($siteDetails['slogan'] != '')
+		{
+			$this->slogan     = $siteDetails['slogan'];
+		}
 	}
 
 	public function theSiteName($before = '', $after = '')

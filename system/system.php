@@ -2,8 +2,8 @@
 
 namespace System;
 
-class System {
-
+class System
+{
 	private $url;
 
 	/**
@@ -50,13 +50,13 @@ class System {
 		            header("304 Not Modified HTTP/1.1", true, $code);
 		            break;
 		        case 305:
-		            header("305 Use Proxy HTTP/1.1",true,$code);
+		            header("305 Use Proxy HTTP/1.1", true, $code);
 		            break;
 		        case 306:
-		            header("306 Not Used HTTP/1.1",true,$code);
+		            header("306 Not Used HTTP/1.1", true, $code);
 		            break;
 		        case 307:
-		            header("307 Temporary Redirect HTTP/1.1",true,$code);
+		            header("307 Temporary Redirect HTTP/1.1", true, $code);
 		            break;
 		    }
 	        header('Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0');

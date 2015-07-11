@@ -7,7 +7,7 @@
 	 */
 	
 
-	$table = '';
+	$table = 'user';
 
 	$identity = 'nim';
 

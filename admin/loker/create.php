@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Tambah Artikel | Sistem Informasi Ikatan Alumni UII</title>
+	<title>Tambah Lowongan Kerja | Sistem Informasi Ikatan Alumni UII</title>
 
 	<link href="<?php echo $app->base_url('public/assets/images/favicon.ico'); ?>" rel="shortcut icon" type="image/x-icon" />
 
@@ -22,7 +22,7 @@
 		Javascript Area
 	-->
 	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/vendor/jquery/dist/jquery.min.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/js/articles.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/js/loker.js'); ?>"></script>
 	<script type="text/javascript" src="<?php echo $app->base_url('public/assets/js/admin.js'); ?>"></script>
 
 </head>
@@ -33,7 +33,7 @@
 	<div class="wrapper w80">
 		<div id="post-area">
 			<div id="post-message"></div>
-				<form action="<?php echo $app->base_url('admin/articles/articlesControl.php'); ?>" method="POST" id="uii-form" class="articles">
+				<form action="<?php echo $app->base_url('admin/loker/lokerControl.php'); ?>" method="POST" id="uii-form" class="loker">
 					<div class="uii-input-control">
 						<label for="title">Title</label>
 						<input type="text" name="title" placeholder="Enter title here" class="uii-input" required="required">
@@ -44,7 +44,7 @@
 						<textarea name="contents" class="uii-textarea"></textarea>
 					</div>
 
-					<input type="hidden" name="type" value="article">
+					<input type="hidden" name="type" value="loker">
 					<input type="hidden" name="actionType" value="create">
 
 					<button class="uii-button button-post">Post</button>

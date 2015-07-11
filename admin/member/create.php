@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Tambah Artikel | Sistem Informasi Ikatan Alumni UII</title>
+	<title>Tambah Member | Sistem Informasi Ikatan Alumni UII</title>
 
 	<link href="<?php echo $app->base_url('public/assets/images/favicon.ico'); ?>" rel="shortcut icon" type="image/x-icon" />
 

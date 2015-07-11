@@ -1,0 +1,94 @@
+
+.wrapper {
+
+}
+
+#navbar {
+	width: 100%;
+	background: #333;
+	color: #FFF;
+	position: absolute;
+	display: inline-flex;
+	font-size: 14px;
+	overflow: hidden;
+}
+
+#navbar > .nav-left {
+	width: 80%;
+	padding: 5px 0 5px 0;
+	vertical-align: middle;
+}
+
+#navbar > .nav-left > ul {
+	display: inline-flex;
+	list-style: none;
+	margin-left: 20px;
+}
+
+#navbar > .nav-left > ul > li:first-child {
+	font-weight: bold;
+}
+
+#navbar > .nav-left > ul > li {
+	padding: 5px 50px 5px 0;
+}
+
+#navbar > .nav-left > ul > li > a:hover {
+	color: #4B8BF5;
+}
+
+#navbar > .nav-right {
+	width: 20%;
+	padding: 5px 0 5px 0;
+	vertical-align: middle;
+}
+
+#navbar > .nav-right > div {
+	padding: 5px 40px 0px 0;
+	float: right;
+	cursor: pointer;
+}
+
+#navbar > .nav-right > div > .caret {
+	border-top-color: #FFF;
+	border-bottom-color: #FFF;
+}
+
+.wrapper > .dashboard {
+	/*margin-top: 80px;*/
+	width: 100%;
+}
+
+.new-status {
+	width: 45%;
+	float: left;
+	border-right: 2px solid #333;
+}
+
+.new-komentar {
+	width: 45%;
+	float: right;
+}
+
+#list-articles {
+	width: 100%;
+}
+
+#list-articles td, #list-articles th {
+	width: 15%;
+}
+
+.tambah-artikel {
+	float: right;
+	padding: 10px 20px 10px 20px;
+	background: #444;
+	margin-bottom: 50px;
+}
+
+.tambah-artikel a:link {
+	color: #000;
+}
+
+.status-area {
+	margin-bottom: 20px;
+}

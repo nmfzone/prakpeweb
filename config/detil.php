@@ -13,7 +13,7 @@
 
 		'siteName'  => 'Ikatan Alumni Universitas Islam Indonesia',
 
-		'copyright' => '&copy; 2015',
+		'copyright' => '',
 		
 		'slogan'    => 'Be a Part of Us'
 

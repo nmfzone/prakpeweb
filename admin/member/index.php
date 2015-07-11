@@ -48,7 +48,7 @@
 					<th>Action</th>
 				</tr>
 			<?php
-				$dt = $db->select('artikel', '', "type = 'article'");
+				$dt = $db->select('artikel');
 
 				$i = 1;
 				foreach ($dt['result'] as $data) {

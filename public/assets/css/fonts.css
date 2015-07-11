@@ -2,11 +2,17 @@
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 300;
-	src: local('Open Sans Light'), local('OpenSans-Light'), url(../fonts/opensans-light.woff2) format('woff2'), url(../fonts/opensans-light.woff) format('woff');
+	src: local('Open Sans Light'), local('OpenSans-Light'), url(../fonts/OpenSans/opensans-light.woff2) format('woff2'), url(../fonts/OpenSans/opensans-light.woff) format('woff');
 }
 @font-face {
 	font-family: 'Open Sans';
 	font-style: normal;
 	font-weight: 600;
-	src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/opensans-semibold.woff2) format('woff2'), url(../fonts/opensans-semibold.woff) format('woff');
+	src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(../fonts/OpenSans/opensans-semibold.woff2) format('woff2'), url(../fonts/OpenSans/opensans-semibold.woff) format('woff');
+}
+@font-face {
+  font-family: "Genericons";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../fonts/Genericons/genericons-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/Genericons/genericons-regular-webfont.woff") format("woff"), url("../fonts/Genericons/genericons-regular-webfont.ttf") format("truetype"), url("../fonts/Genericons/genericons-regular-webfont.svg#genericonsregular") format("svg");
 }

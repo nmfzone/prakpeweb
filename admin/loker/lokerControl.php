@@ -49,7 +49,7 @@
 		}
 		else
 		{
-			echo "Can't Update Article to Database!";
+			echo "Can't Update Lowongan Kerja to Database!";
 		}
 	}
 
@@ -70,6 +70,6 @@
 		}
 		else
 		{
-			echo "Can't Delete Article from Database!";
+			echo "Can't Delete Lowongan Kerja from Database!";
 		}
 	}

@@ -11,6 +11,11 @@
 	padding: 0 auto;
 }
 
+a:link, a:visited {
+	color: #FFF;
+	text-decoration: none;
+}
+
 .w70 {
 	width: 70%;
 }
@@ -93,4 +98,87 @@ body {
 	left:51.2%;
 	top:-8px;
 	z-index:-1;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  /*background-color: #ffffff;*/
+  background: red;
+  border: 1px solid #cccccc;
+  /*border-radius: 4px;*/
+}
+
+.dropdown.drop-right {
+	left: 85%;
+	right: 0%;
+	color: #000;
+}
+
+.dropdown > ul {
+	min-width: 160px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	list-style: none;
+}
+
+.dropdown > ul > li {
+	padding: 5px 10px 5px 10px;
+}
+
+.dropdown > ul > li > a:link, .dropdown > ul > li > a:visited {
+	color: #000;
+}
+
+.dropdown > ul > li:hover {
+	background: #F1F1F1;
+}
+
+.arrow.top {
+	position: absolute;
+	margin-top: -17px;
+	margin-left: 25%;
+    font: 19px/1 "Genericons";
+    vertical-align: top;
+    color: #F1F1F1;
+}
+
+.arrow.top::before {
+	content: "";
+}
+
+.caret {
+    display: inline-block;
+    width: 0px;
+    height: 0px;
+    margin-left: 2px;
+    font: 22px/1 "Genericons";
+    vertical-align: top;
+}
+
+.caret::before {
+	content: "";
+}
+
+a#scroll-up {
+    bottom: 20px;
+    position: fixed;
+    right: 20px;
+    display: none;
+    font: 26px/1 "Genericons";
+    vertical-align: top;
+    color: #FFF;
+    background-color: #0FBE7C;
+    opacity: 0.5;
+    border-radius: 3px;
+    padding: 6px;
+}
+
+a#scroll-up::before {
+    content: "";
 }
